@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A peer-reviewed open access publication on sustainable food systems and agriculture">
+    <title>Journal of Food & Agricultural Systems - Publication Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+            color: white;
+            padding: 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #fff;
+            color: #1976d2;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 1px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .journal-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .journal-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .issn-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 3rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: #1976d2;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        /* Featured Articles */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .article-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .article-card:hover {
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            transform: translateY(-4px);
+        }
+
+        .article-header {
+            padding: 1.5rem;
+            background: #f5f5f5;
+            border-bottom: 3px solid #1976d2;
+        }
+
+        .article-badge {
+            display: inline-block;
+            background: #1976d2;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .article-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .article-authors {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .article-content {
+            padding: 1.5rem;
+        }
+
+        .article-date {
+            font-size: 0.85rem;
+            color: #999;
+            margin-bottom: 1rem;
+        }
+
+        .article-excerpt {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: #999;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .article-link {
+            color: #1976d2;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        .article-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Types of Articles */
+        .types-section {
+            background: #f9f9f9;
+        }
+
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .type-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s;
+        }
+
+        .type-card:hover {
+            border-color: #1976d2;
+            box-shadow: 0 4px 12px rgba(25, 118, 210, 0.15);
+        }
+
+        .type-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .type-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .type-desc {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Submission Form */
+        .submission-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #1976d2;
+            box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        /* Search Section */
+        .search-section {
+            background: #f9f9f9;
+        }
+
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .search-box button {
+            padding: 0.8rem 1.5rem;
+            background: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .search-box button:hover {
+            background: #1565c0;
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .filter-group {
+            background: white;
+            padding: 1rem;
+            border-radius: 4px;
+        }
+
+        .filter-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .filter-group select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        /* About Section */
+        .about-section {
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #1976d2;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .about-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .about-list li {
+            padding: 0.5rem 0;
+            color: #555;
+        }
+
+        .about-list li:before {
+            content: "✓ ";
+            color: #2e7d32;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Editorial Board */
+        .board-section {
+            background: #f9f9f9;
+        }
+
+        .board-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .board-member {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 4px solid #1976d2;
+        }
+
+        .member-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: #333;
+        }
+
+        .member-title {
+            color: #1976d2;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .member-affiliation {
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 1.5rem;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-bottom p {
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .journal-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .articles-grid,
+            .types-grid,
+            .board-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-3 {
+            margin-top: 3rem;
+        }
+
+        .mb-2 {
+            margin-bottom: 2rem;
+        }
+
+        /* Citation Section */
+        .citation-section {
+            background: #f5f5f5;
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin-top: 1.5rem;
+        }
+
+        .citation-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .citation-formats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .citation-box {
+            background: white;
+            padding: 1rem;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        .citation-format-name {
+            font-weight: 600;
+            color: #1976d2;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .citation-text {
+            font-size: 0.85rem;
+            color: #555;
+            font-family: 'Courier New', monospace;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">📚 Agri Allied Magazine</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#articles">Articles</a></li>
+                <li><a href="#submit">Submit</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <a href="#submit" class="btn btn-primary">Submit Article</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="journal-title">Journal of Food & Agricultural Systems</h1>
+            <p class="journal-subtitle">A peer-reviewed open access publication on sustainable food systems and agriculture</p>
+            <div class="issn-badge">ISSN: [Applied]</div>
+            <div class="hero-buttons">
+                <a href="#articles" class="btn btn-primary">Browse Articles</a>
+                <a href="#submit" class="btn btn-secondary">Submit Article</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Articles -->
+    <section id="articles" class="container">
+        <h2 class="section-title">Featured Articles</h2>
+        <p class="section-subtitle">Latest research and insights from our peer-reviewed collection</p>
+        
+        <div class="articles-grid">
+            <!-- Article 1 -->
+            <article class="article-card">
+                <div class="article-header">
+                    <span class="article-badge">Research Article</span>
+                    <h3 class="article-title">Analyzing Value Chain Development in TOP Crops</h3>
+                    <div class="article-authors">Dr. Smith & Dr. Johnson</div>
+                </div>
+                <div class="article-content">
+                    <div class="article-date">Published: June 2026 | Volume 1, Issue 1</div>
+                    <p class="article-excerpt">This comprehensive study examines the value chain dynamics of traditional crops, exploring opportunities and challenges in sustainable agricultural systems...</p>
+                    <div class="article-meta">
+                        <span>📖 8 min read</span>
+                        <span>👁️ 234 views</span>
+                        <span>📥 45 downloads</span>
+                    </div>
+                    <a href="#article-detail" class="article-link">Read Full Article →</a>
+                    <div class="citation-section">
+                        <div class="citation-title">Cite this article</div>
+                        <div class="citation-formats">
+                            <div class="citation-box">
+                                <div class="citation-format-name">APA</div>
+                                <div class="citation-text">Smith, J., & Johnson, K. (2026). Analyzing value chain...</div>
+                            </div>
+                            <div class="citation-box">
+                                <div class="citation-format-name">MLA</div>
+                                <div class="citation-text">Smith, John, and K. Johnson. "Analyzing value chain..." Journal of Food & Agricultural Systems, vol. 1, no. 1, 2026.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 2 -->
+            <article class="article-card">
+                <div class="article-header">
+                    <span class="article-badge">Case Study</span>
+                    <h3 class="article-title">Sustainable Farming Practices in Dryland Agriculture</h3>
+                    <div class="article-authors">Dr. Patel, Dr. Kumar & Ms. Singh</div>
+                </div>
+                <div class="article-content">
+                    <div class="article-date">Published: May 2026 | Volume 1, Issue 1</div>
+                    <p class="article-excerpt">A detailed case study on implementing sustainable water management and soil conservation techniques in semi-arid agricultural regions...</p>
+                    <div class="article-meta">
+                        <span>📖 12 min read</span>
+                        <span>👁️ 189 views</span>
+                        <span>📥 32 downloads</span>
+                    </div>
+                    <a href="#article-detail" class="article-link">Read Full Article →</a>
+                </div>
+            </article>
+
+            <!-- Article 3 -->
+            <article class="article-card">
+                <div class="article-header">
+                    <span class="article-badge">Review</span>
+                    <h3 class="article-title">Climate Resilience in Crop Production Systems</h3>
+                    <div class="article-authors">Dr. Williams & Research Team</div>
+                </div>
+                <div class="article-content">
+                    <div class="article-date">Published: April 2026 | Volume 1, Issue 1</div>
+                    <p class="article-excerpt">A comprehensive review of climate-smart agriculture strategies, adaptation techniques, and best practices for building resilient farming systems...</p>
+                    <div class="article-meta">
+                        <span>📖 15 min read</span>
+                        <span>👁️ 312 views</span>
+                        <span>📥 67 downloads</span>
+                    </div>
+                    <a href="#article-detail" class="article-link">Read Full Article →</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Search & Filter -->
+    <section class="search-section" id="search">
+        <div class="container">
+            <h2 class="section-title">Search Articles</h2>
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" placeholder="Search by title, author, or keywords...">
+                    <button>Search</button>
+                </div>
+                <div class="filter-grid">
+                    <div class="filter-group">
+                        <label>Article Type</label>
+                        <select>
+                            <option>All Types</option>
+                            <option>Research Article</option>
+                            <option>Case Studies</option>
+                            <option>Success Stories</option>
+                            <option>Reviews</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Publication Year</label>
+                        <select>
+                            <option>All Years</option>
+                            <option>2026</option>
+                            <option>2025</option>
+                            <option>2024</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Subject Area</label>
+                        <select>
+                            <option>All Areas</option>
+                            <option>Crop Science</option>
+                            <option>Horticulture</option>
+                            <option>Soil Science</option>
+                            <option>Agricultural Economics</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Types -->
+    <section class="types-section">
+        <div class="container">
+            <h2 class="section-title">Types of Articles We Publish</h2>
+            <div class="types-grid">
+                <div class="type-card">
+                    <div class="type-icon">📊</div>
+                    <h3 class="type-title">Research Articles</h3>
+                    <p class="type-desc">Original research with original data, methodology, results and comprehensive analysis</p>
+                </div>
+                <div class="type-card">
+                    <div class="type-icon">📋</div>
+                    <h3 class="type-title">Case Studies</h3>
+                    <p class="type-desc">Detailed examination of specific agricultural systems, projects, or interventions</p>
+                </div>
+                <div class="type-card">
+                    <div class="type-icon">✅</div>
+                    <h3 class="type-title">Success Stories</h3>
+                    <p class="type-desc">Real-world examples of successful implementation of sustainable agricultural practices</p>
+                </div>
+                <div class="type-card">
+                    <div class="type-icon">📚</div>
+                    <h3 class="type-title">Reviews</h3>
+                    <p class="type-desc">Comprehensive literature reviews and systematic analyses of research topics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <h2 class="section-title">About the Journal</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Our Mission</h3>
+                    <p>The Journal of Food & Agricultural Systems is dedicated to advancing knowledge and practice in sustainable agriculture and food systems through peer-reviewed research, case studies, and practical insights.</p>
+                    <p>We believe in the power of open access to democratize agricultural knowledge and empower farmers, researchers, and policymakers worldwide.</p>
+                    <ul class="about-list">
+                        <li>Peer-reviewed publications</li>
+                        <li>Open access to all articles</li>
+                        <li>Rapid publication process</li>
+                        <li>Global author and reviewer network</li>
+                        <li>Focus on sustainable practices</li>
+                    </ul>
+                </div>
+                <div class="about-text">
+                    <h3>Editorial Board</h3>
+                    <p><strong>Editor-in-Chief</strong></p>
+                    <p>Dr. Your Name<br/>
+                    Institution Name<br/>
+                    email@institution.com</p>
+                    
+                    <p><strong>Associate Editors</strong></p>
+                    <p>Dr. Editor 1 | Dr. Editor 2 | Dr. Editor 3</p>
+
+                    <p><strong>Publication Details</strong></p>
+                    <ul class="about-list">
+                        <li>ISSN: [Applied]</li>
+                        <li>Frequency: Quarterly</li>
+                        <li>Access: Open Access</li>
+                        <li>Language: English</li>
+                        <li>Founded: 2026</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Submission Portal -->
+    <section id="submit" style="background: #f9f9f9;">
+        <div class="container">
+            <h2 class="section-title">Submit Your Article</h2>
+            <p class="section-subtitle">Join our community of researchers and practitioners</p>
+            
+            <form class="submission-form" onsubmit="handleSubmit(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Article Title *</label>
+                        <input type="text" placeholder="Enter your article title" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Article Type *</label>
+                        <select required>
+                            <option value="">Select article type</option>
+                            <option>Research Article</option>
+                            <option>Case Studies</option>
+                            <option>Success Stories</option>
+                            <option>Reviews</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Abstract *</label>
+                    <textarea placeholder="Provide a brief summary of your article (max 500 words)" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Keywords *</label>
+                    <input type="text" placeholder="Enter keywords separated by commas" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Your Name *</label>
+                        <input type="text" placeholder="Full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address *</label>
+                        <input type="email" placeholder="email@example.com" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Institution/Affiliation</label>
+                        <input type="text" placeholder="Your institution">
+                    </div>
+                    <div class="form-group">
+                        <label>Country</label>
+                        <input type="text" placeholder="Your country">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Co-Authors</label>
+                    <textarea placeholder="List co-authors (optional)"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Upload Manuscript *</label>
+                    <input type="file" accept=".pdf,.doc,.docx" required>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" required> I confirm this is original work and has not been published elsewhere
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" required> I disclose any conflicts of interest
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Article</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Author Guidelines -->
+    <section class="container">
+        <h2 class="section-title">Author Guidelines</h2>
+        <div class="about-content">
+            <div>
+                <h3>Submission Requirements</h3>
+                <ul class="about-list">
+                    <li><strong>Manuscript Length:</strong> 3,000 - 8,000 words</li>
+                    <li><strong>Format:</strong> PDF or Word (.doc, .docx)</li>
+                    <li><strong>References:</strong> Minimum 15 scholarly sources</li>
+                    <li><strong>Citation Style:</strong> APA 7th Edition</li>
+                    <li><strong>Language:</strong> English (international English accepted)</li>
+                    <li><strong>Figures/Tables:</strong> High resolution (300 DPI minimum)</li>
+                </ul>
+            </div>
+            <div>
+                <h3>Peer Review Process</h3>
+                <ul class="about-list">
+                    <li><strong>Review Type:</strong> Double-blind peer review</li>
+                    <li><strong>Reviewers:</strong> Typically 2-3 independent experts</li>
+                    <li><strong>Timeline:</strong> 6-12 weeks</li>
+                    <li><strong>Possible Outcomes:</strong> Accept, Minor Revision, Major Revision, Reject</li>
+                    <li><strong>Publication:</strong> Within 2 weeks of final acceptance</li>
+                    <li><strong>DOI:</strong> Each article receives unique digital identifier</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="search-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <p style="color: #555; margin-bottom: 2rem;">Have questions? We're here to help!</p>
+                
+                <div style="background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                    <p style="margin-bottom: 1rem;">
+                        <strong>Email:</strong><br>
+                        <a href="mailto:email@example.com" style="color: #1976d2; text-decoration: none;">email@example.com</a>
+                    </p>
+                    <p style="margin-bottom: 1rem;">
+                        <strong>Website:</strong><br>
+                        <a href="#" style="color: #1976d2; text-decoration: none;">www.yourjournal.com</a>
+                    </p>
+                    <p style="margin-bottom: 0;">
+                        <strong>Follow Us:</strong><br>
+                        <a href="#" style="color: #1976d2; text-decoration: none; margin-right: 1rem;">Twitter</a>
+                        <a href="#" style="color: #1976d2; text-decoration: none; margin-right: 1rem;">LinkedIn</a>
+                        <a href="#" style="color: #1976d2; text-decoration: none;">Facebook</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Journal</h4>
+                <ul>
+                    <li><a href="#articles">Browse Articles</a></li>
+                    <li><a href="#submit">Submit Article</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#">Editorial Board</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>For Authors</h4>
+                <ul>
+                    <li><a href="#">Author Guidelines</a></li>
+                    <li><a href="#">Submission Process</a></li>
+                    <li><a href="#">Peer Review</a></li>
+                    <li><a href="#">Ethics Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Information</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Use</a></li>
+                    <li><a href="#">Copyright</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Current Issue</a></li>
+                    <li><a href="#">Archive</a></li>
+                    <li><a href="#">Announcements</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Journal of Food & Agricultural Systems. All rights reserved. | ISSN: [Applied]</p>
+        </div>
+    </footer>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for your submission! We have received your article and will review it shortly. You will receive a confirmation email with your submission ID.');
+            event.target.reset();
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
